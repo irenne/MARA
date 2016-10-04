@@ -7,7 +7,7 @@ The core of MARA is a supervised machine learning algorithm that learns from exp
 and the temporal domain. Features were optimized to solve the binary classification problem "reject vs. accept". Thus, MARA is not limited to a specific type of artifact, 
 and should be able to handle eye artifacts, muscular artifacts and loose electrodes equally well. 
 
-For detailed instructions, see MaraTutorial.pdf
+For detailed instructions, see MARATutorial.pdf
 
 #### Requirements
 
