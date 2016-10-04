@@ -1,6 +1,6 @@
 # MARA
 
-MARA ("Multiple Artifact Rejection Algorithm") is an open-source <a href="http://sccn.ucsd.edu/eeglab/">EEGLAB</a> plug-in which automatizes the process of hand-labeling independent components for artifact 
+MARA ("Multiple Artifact Rejection Algorithm") is an open-source [EEGLAB](http://sccn.ucsd.edu/eeglab/) plug-in which automatizes the process of hand-labeling independent components for artifact 
 rejection. 
       
 The core of MARA is a supervised machine learning algorithm that learns from expert ratings of 1290 components by extracting six features from the spatial, the spectral 
@@ -9,15 +9,15 @@ and should be able to handle eye artifacts, muscular artifacts and loose electro
 
 For detailed instructions, see MaraTutorial.pdf
 
-<b> Requirements: </b>
+#### Requirements
 
 In addition to the requirements of EEGLAB, MARA needs the Matlab Statistics Toolbox, the Optimization Toolbox and the Signal Processing Toolbox.  
 
-<b> Installation </b> 
+#### Installation 
 
 Copy this folder into your EEGLAB plugins directory. Starting EEGLab will automatically recognize the plugin and MARA should appear in the menu Tools. 
 
-<b> Contact </b> 
+#### Contact
 
 If you have questions or suggestions about the toolbox, please contact: Irene Dowding, 
 irenedowding16 at gmail.com
