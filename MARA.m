@@ -179,7 +179,22 @@ for ic=1:length(icacomps(:,1))  %for each component
     
     myfun = @(x,xdata)(exp(x(1))./ xdata.^exp(x(2))) - x(3);
     xstart = [4, -2, 54];
-    fittedmodel = lsqcurvefit(myfun,xstart,double(pX),double(pY), [], [], optimset('Display', 'off'));
+    try
+        fittedmodel = lsqcurvefit(myfun,xstart,double(pX),double(pY), [], [], optimset('Display', 'off'));
+    catch
+        try
+            % If the optimization toolbox is missing we try with the CurveFit toolbox
+            opt = fitoptions('Method','NonlinearLeastSquares','Startpoint',xstart);
+            myfun = fittype('exp(x1)./x.^exp(x2) - x3;','options',opt);
+            fitobject = fit(double(pX),double(pY),myfun);
+            fittedmodel = [fitobject.x1, fitobject.x2, fitobject.x3];
+        catch
+            % If the CurveFit toolbox is also missing we try with the Statistitcs toolbox
+            myfun = @(p,xdata)(exp(p(1))./ xdata.^exp(p(2))) - p(3);
+            mdl = NonLinearModel.fit(double(pX),double(pY),myfun,xstart);
+            fittedmodel = mdl.Coefficients.Estimate(:)';
+        end
+    end   
     
     %FitError: mean squared error of the fit to the real spectrum in the band 2-40 Hz.
     ts_8to15 = freq(find(freq == 8) : find(freq == 15));
